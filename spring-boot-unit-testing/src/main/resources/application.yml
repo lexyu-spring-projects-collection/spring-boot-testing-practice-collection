@@ -1,0 +1,21 @@
+server:
+  port: 9901
+
+spring:
+  h2:
+    console:
+      path: '/h2'
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: 'sa'
+    password:
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+
+
