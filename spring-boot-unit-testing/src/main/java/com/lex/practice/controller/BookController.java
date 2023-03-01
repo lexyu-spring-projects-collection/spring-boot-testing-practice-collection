@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 /**
  * @author : LEX_YU
@@ -41,15 +40,23 @@ public class BookController {
         return bookRepository.save(bookRecord);
     }
 
-    //TODO: Write /delete method endpoint using TDD method
-
     @PutMapping
     public Book updateBookRecord(@RequestBody @Valid Book bookRecord){
         if (bookRecord == null || bookRecord.getId() == null) {
             throw new NoSuchElementException("Not Found");
         }
-        Optional<Book> optionalBook = bookRepository.findById(bookRecord.getId());
-        return optionalBook.orElseThrow();
+        Book existBook = bookRepository.findById(bookRecord.getId()).get();
+        existBook.setName(bookRecord.getName());
+        existBook.setSummary(bookRecord.getSummary());
+        existBook.setRating(bookRecord.getRating());
+        return existBook;
+    }
+
+    //TODO: Write /delete method endpoint using TDD method
+    @DeleteMapping("/{id}")
+    public void deleteBookById(@PathVariable(value = "id") Long bookId){
+        Book exsitBook = bookRepository.findById(bookId).orElseThrow();
+        bookRepository.delete(exsitBook);
     }
 
 }
