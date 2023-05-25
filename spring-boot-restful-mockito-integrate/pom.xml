@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lex.test</groupId>
-	<artifactId>spring-boot-restful-mockito-intergrate</artifactId>
+	<artifactId>spring-boot-restful-mockito-integrate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-restful-mockito-it</name>
 	<description>Demo project for Spring Boot</description>
