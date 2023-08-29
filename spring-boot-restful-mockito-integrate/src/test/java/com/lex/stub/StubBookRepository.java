@@ -41,4 +41,9 @@ public class StubBookRepository implements BookRepository {
 
 		return books;
 	}
+
+	@Override
+	public Book findBookById(Long bookId) {
+		return null;
+	}
 }

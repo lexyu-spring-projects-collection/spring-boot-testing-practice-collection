@@ -1,43 +1,53 @@
-
-package com.lex.stub;
+package com.lex.annotation_support;
 
 import com.lex.entity.Book;
 import com.lex.repository.BookRepository;
 import com.lex.service.BookService;
+import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnit;
+import org.mockito.junit.MockitoRule;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author : Lex Yu
- * @date : 2023/8/28
+ * @date : 2023/8/29
  */
-public class TestServiceLayerStubType {
+//@RunWith(MockitoJUnitRunner.class) // JUnit 4
+@ExtendWith(MockitoExtension.class) // JUnit 5
+public class AnnotationsTest {
 
-	@Test
-	public void testStub() {
-		BookRepository bookRepository = new StubBookRepository();
-		BookService bookService = new BookService(bookRepository);
+	/* JUnit 4
+	@Rule
+	public MockitoRule mockitoRule = MockitoJUnit.rule();
+	 */
 
-		List<Book> newBooksWithAppliedDiscount = bookService.getNewBooksWithAppliedDiscount(10, 7);
+	@Mock
+	private BookRepository bookRepository;
+	@InjectMocks
+	private BookService bookService;
 
-		newBooksWithAppliedDiscount.forEach(System.out::println);
-
-		assertEquals(5, newBooksWithAppliedDiscount.size());
-		assertEquals(450, newBooksWithAppliedDiscount.get(0).getPrice());
-		assertEquals(360, newBooksWithAppliedDiscount.get(1).getPrice());
+	/* JUnit4
+	@Before
+	public void init(){
+		MockitoAnnotations.initMocks(this);
 	}
+	 */
 
 	@Test
-	public void testStubWithMockito() {
-		BookRepository bookRepository = Mockito.mock(BookRepository.class);
-		BookService bookService = new BookService(bookRepository);
+	public void demoCreateMocksUsingAnnotations(){
 
 		Book book1 = new Book(1L, "Mockito In Action", 500, LocalDate.now());
 		Book book2 = new Book(2L, "Junit 5 In Action", 400, LocalDate.now());
@@ -62,4 +72,5 @@ public class TestServiceLayerStubType {
 		assertEquals(450, newBooksWithAppliedDiscount.get(0).getPrice());
 		assertEquals(360, newBooksWithAppliedDiscount.get(1).getPrice());
 	}
+
 }

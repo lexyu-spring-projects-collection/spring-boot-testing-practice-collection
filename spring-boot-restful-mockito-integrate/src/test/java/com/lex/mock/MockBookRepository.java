@@ -4,9 +4,7 @@ import com.lex.entity.Book;
 import com.lex.repository.BookRepository;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,6 +37,11 @@ class MockBookRepository implements BookRepository {
 
 	@Override
 	public List<Book> findNewBooks(int days) {
+		return null;
+	}
+
+	@Override
+	public Book findBookById(Long bookId) {
 		return null;
 	}
 }

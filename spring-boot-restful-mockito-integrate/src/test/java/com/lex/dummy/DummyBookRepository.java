@@ -27,9 +27,14 @@ class DummyBookRepository implements BookRepository {
 		return bookStore.values();
 	}
 
+	// -----------------------------------------------------------------------------------------------
 	@Override
 	public List<Book> findNewBooks(int days) {
 		return null;
 	}
-	// Test Doubles without Mockito, Dummy
+
+	@Override
+	public Book findBookById(Long bookId) {
+		return null;
+	}
 }

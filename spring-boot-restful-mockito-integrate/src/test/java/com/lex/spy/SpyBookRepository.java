@@ -38,4 +38,9 @@ public class SpyBookRepository implements BookRepository {
 	public List<Book> findNewBooks(int days) {
 		return null;
 	}
+
+	@Override
+	public Book findBookById(Long bookId) {
+		return null;
+	}
 }
