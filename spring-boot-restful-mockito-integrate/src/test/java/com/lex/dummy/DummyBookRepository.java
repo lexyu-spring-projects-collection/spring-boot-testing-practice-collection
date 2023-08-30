@@ -3,6 +3,8 @@ package com.lex.dummy;
 import com.lex.entity.Book;
 import com.lex.repository.BookRepository;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -36,5 +38,30 @@ class DummyBookRepository implements BookRepository {
 	@Override
 	public Book findBookById(Long bookId) {
 		return null;
+	}
+
+	@Override
+	public List<Book> findAllBooks() throws SQLException {
+		return null;
+	}
+
+	@Override
+	public void save_v2(Book book) throws SQLException {
+
+	}
+
+	@Override
+	public Book findBookByTitleAndPulishedDate(String title, LocalDate localDate) {
+		return null;
+	}
+
+	@Override
+	public Book findBookByTitleAndPriceAndIsDigital(String title, int price, boolean isDigital) {
+		return null;
+	}
+
+	@Override
+	public void saveAll(List<Book> books) {
+
 	}
 }

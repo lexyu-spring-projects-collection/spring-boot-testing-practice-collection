@@ -1,4 +1,4 @@
-package com.lex.behavior_verfication;
+package com.lex.behavior_verification;
 
 import com.lex.entity.Book;
 import com.lex.entity.BookRequest;
@@ -6,10 +6,7 @@ import com.lex.repository.BookRepository;
 import com.lex.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InOrder;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -23,9 +20,10 @@ public class TestBookServiceBehaviorVerification {
 
 	@Mock
 	private BookRepository bookRepository;
+//	@Spy
+//	private BookRepository bookRepository;
 	@InjectMocks
 	private BookService bookService;
-
 	@Test
 	public void testAddBook() {
 		Book book = new Book(null, "Mockito In Action", 500, LocalDate.now());
@@ -111,4 +109,17 @@ public class TestBookServiceBehaviorVerification {
 	}
 
 
+	@Test
+	public void testUpdatePriceVerifyInteractionAtTimes() {
+		Book book = new Book(1L, "Mockito In Action", 600, LocalDate.now());
+		Mockito.when(bookRepository.findBookById(1L)).thenReturn(book);
+		bookService.updatePriceNoSamePriceIF(1L, 600);
+		bookService.updatePriceNoSamePriceIF(1L, 600);
+		bookService.updatePriceNoSamePriceIF(1L, 600);
+		bookService.updatePriceNoSamePriceIF(1L, 600);
+//		Mockito.verify(bookRepository, Mockito.atLeast(2)).save(book);
+//		Mockito.verify(bookRepository, Mockito.atMost(2)).save(book);
+//		Mockito.verify(bookRepository, Mockito.atMostOnce()).save(book);
+		Mockito.verify(bookRepository, Mockito.atLeastOnce()).save(book);
+	}
 }

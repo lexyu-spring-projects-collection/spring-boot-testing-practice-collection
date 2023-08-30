@@ -2,6 +2,8 @@ package com.lex.repository;
 
 import com.lex.entity.Book;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,5 +16,11 @@ public interface BookRepository {
 	Collection<Book> findAll();
 	List<Book> findNewBooks(int days);
 	Book findBookById(Long bookId);
+	List<Book> findAllBooks() throws SQLException;
+	void save_v2(Book book) throws SQLException;
+	Book findBookByTitleAndPulishedDate(String title, LocalDate localDate);
 
+	Book findBookByTitleAndPriceAndIsDigital(String title, int price, boolean isDigital);
+
+	void saveAll(List<Book> books);
 }

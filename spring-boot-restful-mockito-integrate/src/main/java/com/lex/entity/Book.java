@@ -18,4 +18,12 @@ public class Book {
 	private String title;
 	private int price;
 	private LocalDate publishedDate;
+	private boolean isDigital;
+
+	public Book(Long bookId, String title, int price, LocalDate publishedDate) {
+		this.bookId = bookId;
+		this.title = title;
+		this.price = price;
+		this.publishedDate = publishedDate;
+	}
 }
