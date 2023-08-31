@@ -1,4 +1,4 @@
-package com.lex.practice.dao;
+package com.lex.practice.repository;
 
 import com.lex.practice.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;

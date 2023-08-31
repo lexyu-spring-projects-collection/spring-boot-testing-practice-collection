@@ -2,7 +2,7 @@ package com.lex.practice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.lex.practice.dao.BookRepository;
+import com.lex.practice.repository.BookRepository;
 import com.lex.practice.entity.Book;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
