@@ -26,4 +26,10 @@ public class Movie {
 	private String genera;
 
 	private LocalDate releaseDate;
+
+	public Movie(String name, String genera, LocalDate releaseDate) {
+		this.name = name;
+		this.genera = genera;
+		this.releaseDate = releaseDate;
+	}
 }
