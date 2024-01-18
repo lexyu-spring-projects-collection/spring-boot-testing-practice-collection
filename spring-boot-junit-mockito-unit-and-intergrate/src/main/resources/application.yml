@@ -2,6 +2,10 @@ server:
   port: 9901
 
 spring:
+
+  main:
+    web-application-type: none
+
   h2:
     console:
       path: '/h2'
@@ -17,5 +21,6 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
+
 
 
