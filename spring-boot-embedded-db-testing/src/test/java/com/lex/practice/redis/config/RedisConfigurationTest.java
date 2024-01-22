@@ -16,6 +16,8 @@ public class RedisConfigurationTest {
 	private RedisServer redisServer;
 
 	public RedisConfigurationTest(RedisProperties redisProperties) throws IOException {
+		System.out.println(redisProperties.getRedisHost());
+		System.out.println(redisProperties.getRedisPort());
 		this.redisServer = new RedisServer(redisProperties.getRedisPort());
 	}
 

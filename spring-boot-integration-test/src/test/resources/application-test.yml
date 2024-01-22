@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-it-test-demo
+
+  main:
+    allow-bean-definition-overriding: on
